@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
+import criptografia.AES;
 import criptografia.CryptoAES;
 
 public class Usuario implements Serializable {
@@ -22,9 +23,9 @@ public class Usuario implements Serializable {
 
 	public String getPasswordCripto() {
 		try {
-			CryptoAES caes = new CryptoAES();
-			caes.geraCifra(password.getBytes(),new File(RES+"chave.simnetrica"));
-			return ""+caes.getTextoCifrado();
+			//AES caes = new AES();
+			//AES.encrypt(password,"1234");
+			return AES.encrypt(password,"minhaSenhaSecreta");
 		} catch (Exception e) {
 			System.out.print(e.getStackTrace());
 			return "Erro";
